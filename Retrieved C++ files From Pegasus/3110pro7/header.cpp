@@ -1,0 +1,637 @@
+//header cpp
+#include <iostream>
+#include <cstdlib>
+#include "header.h"
+#include <fstream>
+using namespace std;
+
+
+/*
+	existe un bug en agregar, donde remplada el par embes de añadirle
+*/
+namespace pares{
+	
+	template<class T>
+	ParOrdenado<T>::ParOrdenado(){
+		ListHead = NULL;
+	}
+	
+	template<class T>
+	ParOrdenado<T>::~ParOrdenado(){
+	}
+
+
+
+template<class T>
+void ParOrdenado<T>::agregar_final(int& max ){
+	//repeated, installed
+	node<T>* temporary;
+	T number1, number2;
+	node<T>* q = new node<T>;
+	
+	cout << "Introduzca elementos de un par ordenado, separados por un espacio, para agregarlo a la lista." << endl;
+	cin >> number1 >> number2;
+	
+	q->A= number1;
+	q->B=number2;
+	q->link = NULL;
+	
+	if(ListHead == NULL){
+		ListHead = new node<T>;
+		ListHead = q;
+		cout << "Cabeza de lista creada." << endl;
+		max++; 
+	}
+	
+	else{
+		
+		if(repetido(number1,number2)){
+			cout << "El par ordenado ya existe en la lista. Favor de introducir otro par diferente. Este par no sera almacenado." << endl;
+		}
+		else{
+			
+			temporary = new node<T>;
+			temporary = ListHead;
+			
+			while(temporary ->link != NULL){
+				temporary = temporary->link;
+			}
+		temporary ->link = q;
+		max++;	
+		}
+	}
+}
+
+template<class T>
+void ParOrdenado<T>::agregar_principio(int& max){
+	// repeated check, installed
+	node<T>* temporary;
+	T number1, number2;
+	
+	cout << "Introduzca elementos de un par ordenado, separados por un espacio, para agregarlo a la lista." << endl;
+	cin >> number1 >> number2;
+	if(ListHead == NULL){
+		ListHead = new node<T>;
+		ListHead->A = number1;
+		ListHead->B = number2;
+		ListHead->link = NULL;
+		cout << "Cabeza de lista creada." << endl;
+		max++;
+	}
+	
+	else{
+		if(repetido(number1,number2)){
+			cout << "El par ordenado ya existe en la lista. Favor de introducir otro par diferente. Este par no sera almacenado." << endl;
+		}
+		
+		else{
+			
+			temporary = new node<T>;
+			temporary->A = number1;
+			temporary->B = number2;
+			temporary->link = ListHead;
+			ListHead = temporary;
+			max++;
+		}
+		
+	}
+}
+
+template<class T>
+void ParOrdenado<T>::sumar(int& max){
+	node<T>* cursor;
+	node<T>* temporary;
+	
+	int a, b, c, d;
+	T x, y;
+	
+	
+	if(IsEmpty()){
+		cout << "Lista esta vacia. No se puede sumar." << endl<<endl;
+	}
+	else{
+		
+		
+		do{
+			
+			mostrar();
+			cout << "Eliga los numeros marcando el par ordenado que desea sumar. " << endl;
+			cin >> x >> y;
+			if(x> max || y > max || x < 1 || y < 1){
+				cout << "Opcion invalida dentro de las alternativas provistas. Favor de elegir pares dentro de la lista." << endl;
+			}
+		} while (x> max || y > max || x < 1 || y < 1);
+		
+		
+		
+		
+		
+		cursor = ListHead;
+		bool found = false;
+		for(int i = 1; found == false; i++){
+			if(i == x){
+				a = cursor->A;
+				b = cursor->B;
+				cout << "Par 1: " << a << " " << b << endl;
+				found = true;
+			}
+			
+			else{
+				cursor = cursor->link;
+			}
+		}
+		
+		
+		
+		
+		
+		cursor = ListHead;
+		
+		found = false;
+			for(int i = 1; found == false; i++){
+			if(i == y){
+				c = cursor ->A;
+				d = cursor ->B;
+				cout << "Par 2: " << c << " " << d << endl;
+				found = true;
+			}
+			
+			else{
+				cursor = cursor->link;
+			}
+		}
+		
+		
+		 int uno, dos;
+		 uno = a+c;
+		 dos = b+d;
+		 cout << "Resultado de la suma de los dos pares ordenados: " << uno << ", " << dos << endl;
+		
+		
+		
+		if(repetido(uno,dos)){
+			cout << "numero repetido, no sera guardado." << endl;
+		}
+		
+		else{
+			
+		node<T>* q = new node<T>;
+		max++;
+		
+		q->A= uno;
+		q->B= dos;
+		q->link = NULL;
+		
+		temporary = ListHead;
+		
+			
+			while(temporary ->link != NULL){
+				temporary = temporary->link;
+			}
+			temporary ->link = q;
+		}
+	
+}
+
+	
+}
+
+template<class T>
+void ParOrdenado<T>::restar(int& max){
+	//resta
+	node<T>* cursor;
+	node<T>* temporary;
+	
+	int a, b, c, d;
+	T x, y;
+	
+	
+	if(IsEmpty()){
+		cout << "Lista esta vacia. No se puede restar." << endl<<endl;
+	}
+	else{
+		
+		
+		do{
+			
+			mostrar();
+			cout << "Eliga los numeros marcando el par ordenado que desea restar. " << endl;
+			cin >> x >> y;
+			if(x> max || y > max || x < 1 || y < 1){
+				cout << "Opcion invalida dentro de las alternativas provistas. Favor de elegir pares dentro de la lista." << endl;
+			}
+		} while (x> max || y > max || x < 1 || y < 1);
+		
+		
+		
+		
+		
+		cursor = ListHead;
+		bool found = false;
+		for(int i = 1; found == false; i++){
+			if(i == x){
+				a = cursor->A;
+				b = cursor->B;
+				cout << "Par 1: " << a << " " << b << endl;
+				found = true;
+			}
+			
+			else{
+				cursor = cursor->link;
+			}
+		}
+		
+		
+		
+		
+		
+		cursor = ListHead;
+		
+		found = false;
+			for(int i = 1; found == false; i++){
+			if(i == y){
+				c = cursor ->A;
+				d = cursor ->B;
+				cout << "Par 2: " << c << " " << d << endl;
+				found = true;
+			}
+			
+			else{
+				cursor = cursor->link;
+			}
+		}
+		
+		
+		 int uno, dos;
+		 uno = a-c;
+		 dos = b-d;
+		 cout << "Resultado de la resta de los dos pares ordenados: " << uno << ", " << dos << endl;
+		
+		
+		
+		if(repetido(uno,dos)){
+			cout << "elemento repetido, no sera guardado." << endl;
+		}
+		
+		else{
+			
+		node<T>* q = new node<T>;
+		max++;
+		
+		q->A= uno;
+		q->B= dos;
+		q->link = NULL;
+		
+		temporary = ListHead;
+		
+			
+			while(temporary ->link != NULL){
+				temporary = temporary->link;
+			}
+			temporary ->link = q;
+		}
+	
+}	
+
+}
+
+template<class T>
+void ParOrdenado<T>::mostrar(){
+	//modify to overload the output
+	
+	if(IsEmpty()){
+		cout << "Lista esta vacia." << endl <<endl;
+	}
+	else{
+		node<T>* cursor = ListHead;
+		int count = 1;
+		while(cursor != NULL){
+			cout << "Par ordenado " << count << ":" << endl; 
+			cout << "(" << cursor->A << "," << cursor->B << ")" << endl;
+			cursor = cursor->link;
+			count++;
+		} cout << endl;
+
+}
+}
+
+template<class T>
+bool ParOrdenado<T>::repetido(T a, T b){
+	
+	node<T>* temporary = new node<T>;
+	temporary = ListHead;
+	bool repeated=false;
+	
+	int counter =0;
+	
+	
+	while(temporary){
+		temporary = temporary->link;
+		counter++;
+	}
+	temporary = ListHead;
+	for(int i = 0; i<counter; i++){
+		
+		if((a == temporary->A && b== temporary->B)){
+			//cout << "entra while"<< endl;
+			repeated = true;
+			
+			if(temporary->link==NULL){
+					// empty a proposito
+				}
+				
+			else{
+					temporary = temporary->link;
+				}
+		}
+		
+		else{
+	
+				if(temporary->link==NULL){
+					// empty a proposito
+				}
+				else{
+					temporary = temporary->link;
+				}
+		}
+		
+	}
+	
+	if(repeated == true){
+		return true;
+	}
+	else{
+		return false;
+	}
+	
+	delete temporary;
+}
+
+
+template<class T>
+istream &operator >>(istream& entrada, node<T>*& x){
+    entrada >> x.A >> x.B;
+    return entrada;
+}
+
+template<class T>
+ostream &operator <<(ostream& salida , const node<T>*& x){
+    salida << "(" << x.A << "," << x.B << ")" << endl;
+    return salida;
+}
+
+template<class T>
+bool ParOrdenado<T>::IsEmpty(){
+	if(ListHead == NULL)
+		{
+		return true;
+		}
+	else{
+		return false;
+	}
+}
+
+template<class T>  //Agregar en cualquier posicion
+void ParOrdenado<T>::agregar(int& max){
+	//adding stuff
+	node<T>* prev;
+	node<T>* add;
+	int x;
+	T a, b;
+	
+	
+	if(IsEmpty()){
+		cout << "La lista esta vacia. Por lo tanto, se agregara el par ordenado al principio de la lista." << endl;
+	    cout << "Introduzca los elementos del par ordenado separados por un espacio" << endl;
+	    cin >> a >> b;
+	     
+	    ListHead = new node<T>;
+		ListHead->A = b;
+		ListHead->B = b;
+		ListHead->link = NULL;
+		cout << "Cabeza de lista creada." << endl;
+		max++;
+	}
+  
+	else{
+	    temporary = ListHead;
+		do{
+			mostrar();
+			cout << "Eliga el numero marcado el par ordenado que desea anadir. " << endl;
+			cin >> x;
+			
+			if( x < 1 || x > max){
+				cout << "Opcion invalida dentro de las alternativas provistas. Favor de elegir par dentro de la lista." << endl;
+			}
+		}while( x < 1 || x > max);
+		
+		cout << "Escribir elementos, separado por un espacio, despues aprete enter" << endl;
+		cin >> a >> b;
+		
+		if (repetido(a,b)){
+			cout << "Error, numero ya estan en la lista. no se pueden repetir." << endl;
+		}
+		
+		else{
+			for(int i = 1;i<=max ; i++){	
+			
+				if(i == x){
+					if(temporary == ListHead){
+						cout << "if listhead" << endl;
+						add = new node<T>;
+						add->link = ListHead;
+						ListHead = add;
+					}
+					
+					else{
+						cout << "else" << endl;	
+						if(temporary->link == NULL){
+							add = new node<T>;
+							add->link = temporary;
+							prev->link = add;
+						}
+						else{	
+							add = new node<T>;
+			
+							add->link = prev->link;
+							prev->link = add;	
+						}	
+					}
+				}
+				else{
+					prev = temporary;
+				temporary = temporary->link;	
+				}
+			}
+		
+			add->A = a;
+			add->B = b;
+			max++;
+		}	
+	}	
+}
+
+template<class T>
+void ParOrdenado<T>::eliminar(int& max){
+	//deleting stuff
+	
+	if(IsEmpty()){
+		cout<< "La lista ya esta vacia. No se puede eliminar nodos." << endl;
+	}
+	else{
+		node<T>* temporary;
+		node<T>* next;
+		node<T>* prev;
+		int x, a, b;
+		
+		
+		temporary = ListHead;
+		next = temporary->link;
+		do{
+			mostrar();
+			cout << "Eliga el numero marcando el par ordenado que desea eliminar. " << endl;
+			cin >> x;
+			
+			if( x < 1 || x > max){
+				cout << "Opcion invalida dentro de las alternativas provistas. Favor de elegir par dentro de la lista." << endl;
+			}
+		}while( x < 1 || x > max);
+		
+		if(x == 1){
+			ListHead = ListHead->link;
+			delete temporary;
+			max--;
+		}
+		
+		else{
+			for(int i = 1; i!=x ; i++){
+				prev = temporary;
+				temporary = temporary->link;
+				next = next->link;
+			}
+			prev->link = next;
+			delete temporary;
+			max--;			
+		}		
+	}	
+}
+
+
+//ordenar denominador opcional
+template<class T>
+void ParOrdenado<T>::ordenar(){
+	//ordering stuff
+	node<T>* temporary = ListHead;
+	int tempA, tempB;
+	int counter =0;
+	if(IsEmpty()){
+		cout << "Lista vacia. Favor de agregar pares ordenados primero" << endl;
+	}
+	
+	else{
+		
+	while(temporary){
+		temporary = temporary->link;
+		counter++;
+	}
+	temporary = ListHead;
+	
+	for(int j = 0; j < counter; j++){
+		
+		while(temporary->link){
+			
+			if(temporary->A > temporary->link->A){
+				tempA = temporary->A;
+				tempB = temporary->B;
+				temporary->A = temporary->link->A;
+				temporary->B = temporary->link->B;
+				temporary->link->A = tempA;
+				temporary->link->B = tempB;
+				
+				temporary = temporary->link;
+				
+			}
+			
+			else{
+				temporary = temporary->link;
+			}
+			
+		}
+		
+		temporary = ListHead;
+		
+	}	
+		
+	cout << "Lista ha sido organizada" << endl << endl;	
+	}
+	
+	
+}
+	
+template<class T>
+void ParOrdenado<T>::mostrar2(ofstream& out){
+	//modify to overload the output
+	
+	if(IsEmpty()){
+		cout << "Lista esta vacia." << endl <<endl;
+	}
+	else{
+		node<T>* cursor = ListHead;
+		int count = 1;
+		while(cursor != NULL){
+			cout << "Par ordenado " << count << ":" << endl; 
+			cout << "(" << cursor->A << "," << cursor->B << ")" << endl;
+			out << "Par ordenado " << count << ":" << endl; 
+			out << "(" << cursor->A << "," << cursor->B << ")" << endl;
+			cursor = cursor->link;
+			count++;
+		} cout << endl;
+
+}
+}
+	
+	
+void menu(int& opc){
+	
+	
+	do{
+		cout << "Eliga una alternativa para hacer su lista." << endl;
+		cout << "1. Agregar un par ordenado a principio de lista." << endl;
+		cout << "2. Agregar par ordenado a final de lista." << endl;
+		cout << "3. Agregar un par ordenado en cualquier parte de la lista." << endl;
+		cout << "4. Eliminar un par ordenado en cualquier parte de la lista." << endl;
+		cout << "5. Organizar pares ordenados." << endl;
+		cout << "6. Sumar dos pares ordenados." << endl;
+		cout << "7. Restar dos pares ordenados." << endl;
+		cout << "8. Mostrar lista." << endl;
+		cout << "9. Cambiar elemento." << endl;
+		cout << "10. Fin de programa." << endl;
+		cin >> opc;
+		
+		if (opc < 0 || opc >10){
+			cout << "Error: opcion invalida. Favor repetir." << endl << endl;
+		}
+	}while(opc < 0 || opc > 10);
+}	
+
+void menu2(int& opc2){
+	do{
+		cout << "Elige entre estar tres alternativas para crear una lista." << endl;
+		cout << "1. Enteros \t(X,Y) " << endl;
+		cout << "2. Reales \t(X.0, Y.0) " << endl;
+		cout << "3. Caracteres \t(\'A\', \'B\') " << endl<< endl;
+		cout << "**Para mostrar lista en archivo, selecione mostrar en menu**" << endl;
+		cin >> opc2;
+		
+		if(opc2 < 1 || opc2 >3){
+			cout << "Opcion invalidad, favor repetir." << endl << endl;
+		}
+		
+	}while(opc2 < 1 || opc2 >3);
+	
+}
+
+
+}
+
+

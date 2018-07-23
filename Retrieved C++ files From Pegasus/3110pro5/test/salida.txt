@@ -1,0 +1,9 @@
+Opcion 6 elegida
+Racional nuevo: 15/16
+Opcion 5 elegida
+
+Fraccion 1 es diferente a fraccion 2.
+
+Fraccion 1 es mayor que fraccion 2.
+
+Fin del programa.

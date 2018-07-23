@@ -1,0 +1,3 @@
+Opcion 6 elegida
+Racional nuevo: 12/32
+Fin del programa.
