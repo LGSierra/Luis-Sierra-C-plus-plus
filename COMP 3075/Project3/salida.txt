@@ -1,0 +1,62 @@
+Opcion 1 elegido.
+Para el producto "Disco Duro" se vendio esta cantidad en un total de 7 dias: 1337
+Para el producto "Mini Altavoz" se vendio esta cantidad en un total de 7 dias: 1076
+Para el producto "Teclado" se vendio esta cantidad en un total de 7 dias: 1761
+
+Opcion 2 elegido
+Para dia 3 de vendio el producto " Disco Duro" 126 veces 
+Para dia 3 de vendio el producto " Mini Altavoz" 237 veces 
+Para dia 3 de vendio el producto " Teclado" 232 veces 
+
+Producto que mas se vendio es "Mini Altavoz" con 237 ventas.
+
+Opcion 3 elegido.
+El vendedor/a "
+Febles Bustillo Gabriel F" pudo vender: 
+El producto "Mini Altavoz" 5 veces en el dia 4.
+
+El vendedor/a "
+Velez Vargas Yadiel H" pudo vender: 
+El producto "Mini Altavoz" 0 veces en el dia 4.
+
+El vendedor/a "
+Mendez Medina Santos E" pudo vender: 
+El producto "Mini Altavoz" 0 veces en el dia 4.
+
+El vendedor/a "
+Rodriguez Latorre Carlos J" pudo vender: 
+El producto "Mini Altavoz" 2 veces en el dia 4.
+
+El vendedor/a "
+Sierra Torres Luis G" pudo vender: 
+El producto "Mini Altavoz" 30 veces en el dia 4.
+
+El vendedor/a "
+Cartagena Velez Annamary W" pudo vender: 
+El producto "Mini Altavoz" 7 veces en el dia 4.
+
+El vendedor/a "
+Gonzalez Rivera Wilfredo G" pudo vender: 
+El producto "Mini Altavoz" 17 veces en el dia 4.
+
+El vendedor/a "
+Feliciano Lopez Jan G" pudo vender: 
+El producto "Mini Altavoz" 9 veces en el dia 4.
+
+El vendedor/a "
+Rivera Collazo Gabriel D" pudo vender: 
+El producto "Mini Altavoz" 24 veces en el dia 4.
+
+El vendedor/a "
+Aldarondo Torres Wilfredo" pudo vender: 
+El producto "Mini Altavoz" 1 veces en el dia 4.
+
+El vendedor/a "
+Rosado Class Jonathan J" pudo vender: 
+El producto "Mini Altavoz" 3 veces en el dia 4.
+
+El vendedor/a "
+Mendez Roman Ivelisse" pudo vender: 
+El producto "Mini Altavoz" 4 veces en el dia 4.
+
+
